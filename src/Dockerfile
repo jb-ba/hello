@@ -20,5 +20,5 @@ FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 # Copy static executable
-COPY --from=builder /go/src/gitlab.com/ieaxp/iaf/lifematches/cmd/main .
+COPY --from=builder /go/src/github.com/jb-ba/hello/cmd/main .
 CMD ./main
