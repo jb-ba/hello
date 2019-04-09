@@ -12,7 +12,7 @@ ENV GO111MODULE=on
 COPY . /go/src/github.com/jb-ba/hello
 WORKDIR /go/src/github.com/jb-ba/hello
 RUN go mod download && \
- cd /go/src/gitlab.com/ieaxp/iaf/lifematches/cmd && \
+ cd /go/src/github.com/jb-ba/hello/cmd && \
  CGO_ENABLED=0 GOOS=linux go build -ldflags "-s -w" -a -installsuffix cgo -o livematches .
 
 # STEP 2 build a small image from scratch
