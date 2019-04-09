@@ -16,5 +16,5 @@ FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
 # Copy our static executable
-COPY --from=builder /go/src/github.com/jb-ba/hello/src/cmd/main .
-CMD ./main
+COPY --from=builder /go/src/github.com/jb-ba/hello/src/cmd/main /
+CMD ["/main"]
