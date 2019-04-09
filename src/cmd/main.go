@@ -21,8 +21,8 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "welcome home\n")
 }
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "v*: welcome to hello\n")
+	fmt.Fprint(w, "v3: welcome to hello\n")
 }
 func infoHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "v*\n")
+	fmt.Fprint(w, "v3\n")
 }
