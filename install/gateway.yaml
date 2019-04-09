@@ -1,0 +1,62 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: hello-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: hello
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - hello-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /
+        - uri:
+            prefix: /hello
+        - uri:
+            exact: /logout
+        - uri:
+            prefix: /api/v2/products
+      route:
+        - destination:
+            host: hello
+            #            subset: v1
+            port:
+              number: 3000
+    - match:
+        - uri:
+            exact: /forward
+        - uri:
+            exact: /info
+      route:
+        - destination:
+            host: forwarding
+            port:
+              number: 3001
+    - match:
+        - uri:
+            prefix: /matches
+        - uri:
+            prefix: /tables
+        - uri:
+            prefix: /users
+      route:
+        - destination:
+            host: livematches
+            port:
+              number: 8013
